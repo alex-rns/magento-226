@@ -1,7 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: alexrns
- * Date: 19.10.18
- * Time: 14:57
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
  */
+\Magento\Framework\Component\ComponentRegistrar::register(
+    \Magento\Framework\Component\ComponentRegistrar::THEME,
+    'frontend/Belodubrovskyi/Theme',
+    __DIR__
+);
