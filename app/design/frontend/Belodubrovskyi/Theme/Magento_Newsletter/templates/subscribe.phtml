@@ -10,6 +10,7 @@
 
 ?>
 <div class="block newsletter">
+    <?= $block->getChildHtml( 'title_text');?>
     <div class="title"><strong><?= $block->escapeHtml(__('Newsletter')) ?></strong></div>
     <div class="content">
         <form class="form subscribe"
