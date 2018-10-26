@@ -13,6 +13,13 @@
                    template="Magento_Theme::geekhub/promo_block.phtml"/>
         </referenceContainer>
         <referenceContainer name="footer">
+            <container name="footer.geekhub.container" htmlClass="geekhub-container" htmlTag="div" after="footer_links">
+                <block class="Magento\Framework\View\Element\Text" name="geekhub.label" as="geekhub_label">
+                    <action method="setText">
+                        <argument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="value" xsi:type="string">This site was made with the help of geekhub.com</argument>
+                    </action>
+                </block>
+            </container>
             <referenceBlock name="form.subscribe">
                 <block class="Magento\Framework\View\Element\Text" name="subscribe_title" as="title_text">
                     <action method="setText">
