@@ -7,6 +7,11 @@
                 <argument name="logo_img_width" xsi:type="number">200</argument>
                 <argument name="logo_img_height" xsi:type="number">200</argument>
             </arguments>
+            <block class="Magento\Framework\View\Element\Text" name="custom.logo.left" as="my_custom_text">
+                <action method="setText">
+                    <argument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="value" xsi:type="string">My custom text left to the logo</argument>
+                </action>
+            </block>
         </referenceBlock>
         <referenceContainer name="sidebar.additional">
             <block class="Magento\Framework\View\Element\Template" name="promo_block" as="geekhub_promo_block"
