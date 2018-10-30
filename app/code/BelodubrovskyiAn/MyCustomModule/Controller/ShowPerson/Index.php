@@ -8,6 +8,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        die("Hello 😉 - BelodubrovskyiAn\\MyCustomModule\\Controller\\ShowPerson\\Index - execute() method");
+        $this->_view->loadLayout();
+        $this->_view->renderLayout();
     }
 }
