@@ -7,7 +7,7 @@
                        htmlTag="div"
                        htmlClass="homework-content"
                        after="-">
-                <block class="Magento\Framework\View\Element\Template"
+                <block class="BelodubrovskyiAn\MyCustomModule\Block\CustomBlock"
                        name="homework.custom.block"
                        as="homework.custom.lesson3"
                        template="BelodubrovskyiAn_MyCustomModule::lesson/myhomework.phtml"/>
