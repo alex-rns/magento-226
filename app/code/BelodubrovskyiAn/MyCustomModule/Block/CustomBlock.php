@@ -12,4 +12,7 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
         $this->setTemplate(self::LESSON3_TEMPLATE);
         return $this;
     }
+    public function getUrlToJsonResponse() {
+        return $this->getUrl('home_work/jsonresponse/indexjson');
+    }
 }
