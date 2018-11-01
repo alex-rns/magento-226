@@ -2,7 +2,7 @@
 namespace BelodubrovskyiAn\MyCustomModule\Block;
 class CustomBlock extends \Magento\Framework\View\Element\Template
 {
-    const LESSON3_TEMPLATE = "BelodubrovskyiAn_MyCustomModule::lesson/myhomework.phtml";
+    const LESSON3_TEMPLATE = "BelodubrovskyiAn_MyCustomModule::lesson/myhomework_test_prepare_layout.phtml";
     /**
      * add custom template
      */
