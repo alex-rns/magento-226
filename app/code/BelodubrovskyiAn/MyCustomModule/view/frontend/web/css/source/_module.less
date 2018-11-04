@@ -11,9 +11,22 @@
 ////------------------------------------
 
 & when (@media-common = true) {
+  .catalog-product-view-tab-request-sample-form {
+    .image-wrapper {
+      background-color: magenta;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs){
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+  .catalog-product-view-tab-request-sample-form {
+    .image-wrapper {
+      background-color: black;
+    }
+  }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
@@ -23,7 +36,7 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
   .catalog-product-view-tab-request-sample-form {
     .image-wrapper {
-      width: 70%;
+      width: 50%;
       float: left;
     }
   }
