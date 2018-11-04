@@ -10,7 +10,7 @@ class IndexJson extends \Magento\Framework\App\Action\Action
     {
         /** @var \Magento\Framework\Controller\Result\Json $controllerResult */
         $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $data = ['content' => "What is Parent_Theme"];
+        $data = ['content' => "Default Router Is"];
         return $controllerResult->setData($data);
     }
-} 
+}
