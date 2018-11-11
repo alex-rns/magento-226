@@ -1,0 +1,44 @@
+<div>
+    <h3>
+        <a href="#" id="click-dealer-registration">-> Registration for dealer</a>
+    </h3>
+
+</div>
+<div id="dealer-registration" style="display:none;">
+    <div id="dealer-registration-wrapper">
+    </div>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: '',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        $('#dealer-registration-wrapper').empty();
+                        this.closeModal();
+                    }
+                }]
+            };
+            var popup = modal(options, $('#dealer-registration'));
+            $("#click-dealer-registration").on('click',function(){
+                var modalContent = '<h1>Test</h1>';
+                $('#dealer-registration-wrapper').html(modalContent);
+                $("#dealer-registration").modal("openModal");
+            });
+        }
+    );
+</script>
