@@ -7,6 +7,7 @@
                    template="BelodubrovskyiAn_Lesson5Module::lesson5/register_dealer.phtml"
                    group="register.dealer">
             </block>
+
         </referenceContainer>
     </body>
 </page>
