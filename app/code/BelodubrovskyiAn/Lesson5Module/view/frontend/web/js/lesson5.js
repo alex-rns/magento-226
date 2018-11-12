@@ -1,6 +1,4 @@
 define(['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
-    var mageJsComponent = function()
-    {
         var options = {
             type: 'popup',
             responsive: true,
@@ -18,6 +16,4 @@ define(['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
         $("#click-dealer-registration").on('click', function () {
             $("#dealer-registration").modal("openModal");
         });
-    };
-    return mageJsComponent;
 });
