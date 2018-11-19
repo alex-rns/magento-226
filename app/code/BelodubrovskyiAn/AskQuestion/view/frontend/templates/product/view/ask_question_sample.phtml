@@ -8,7 +8,7 @@
     <h2><?php echo $block->escapeHtml(__('Ask Question')) ?></h2>
     <div>
         <form class="form ask-question-sample"
-              action="#"
+              action="<?= $block->getUrl('ask_question_sample/submit') ?>"
               id="ask-question-sample-form"
               method="post"
               data-mage-init='{"askQuestionSample":{}}'
