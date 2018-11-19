@@ -10,7 +10,9 @@
         <form class="form ask-question-sample"
               action="#"
               id="ask-question-sample-form"
-              method="post">
+              method="post"
+              data-mage-init='{"askQuestionSample":{}}'
+              onsubmit="return false;">
             <fieldset class="fieldset">
                 <div class="field name required">
                     <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
