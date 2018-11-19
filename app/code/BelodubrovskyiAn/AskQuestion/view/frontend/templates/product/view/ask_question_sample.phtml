@@ -47,10 +47,11 @@
                                title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
                                class="input-text"
                                type="text"
+                               data-validate="{required:true}"
                                placeholder="Input your phone number"/>
                     </div>
                 </div>
-                <div class="field comment">
+                <div class="field comment required">
                     <label class="label"
                            for="comment"><span><?= $block->escapeHtml(__('Question')) ?></span></label>
                     <div class="control">
@@ -60,6 +61,7 @@
                                   class="input-text"
                                   cols="5"
                                   rows="3"
+                                  data-validate="{required:true}"
                                   placeholder="Input your question"></textarea>
                     </div>
                 </div>

@@ -1,9 +1,8 @@
 define([
     'jquery',
-    'Magento_Ui/js/modal/alert',
-    'mage/translate',
+    'geekhubValidationAlert',
     'jquery/ui'
-], function ($, alert) {
+], function ($, validationAlert) {
     'use strict';
 
     $.widget('geekhub.askQuestionSample', {
@@ -21,13 +20,10 @@ define([
          */
         submitForm: function () {
             if (!this.validateForm()) {
+                validationAlert();
+
                 return;
             }
-
-            alert({
-                title: $.mage.__('Success'),
-                content: $.mage.__('Thank you')
-            });
         },
 
         /**
@@ -35,7 +31,7 @@ define([
          * @returns {bool}
          */
         validateForm: function () {
-            return true;
+            return $(this.element).validation().valid();
         }
     });
 
