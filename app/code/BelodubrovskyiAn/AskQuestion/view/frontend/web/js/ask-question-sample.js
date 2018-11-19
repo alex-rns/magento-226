@@ -2,6 +2,7 @@ define([
     'jquery',
     'geekhubValidationAlert',
     'Magento_Ui/js/modal/alert',
+    'mage/translate',
     'mage/cookies',
     'jquery/ui'
 ], function ($, validationAlert, alert) {
@@ -51,9 +52,9 @@ define([
                 .fail(function (error) {
                     console.log(JSON.stringify(error));
                     alert({
-                        title: 'Error',
-                        content: 'Your request can not be submitted. Please, contact us directly via email' +
-                            ' or prone to get your Sample.'
+                        title: $.mage.__('Error'),
+                        content: $.mage.__('Your request can not be submitted. Please, contact us directly via email' +
+                            ' or prone to get your Sample.')
                     });
                 });
 
