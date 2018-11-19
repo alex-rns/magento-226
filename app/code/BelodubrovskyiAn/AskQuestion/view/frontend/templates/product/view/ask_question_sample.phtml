@@ -18,7 +18,7 @@
                     <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
                     <div class="control">
                         <input name="name"
-                               id="name"
+                               id="question_name"
                                title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
                                class="input-text"
                                type="text"
@@ -30,7 +30,7 @@
                     <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
                     <div class="control">
                         <input name="email"
-                               id="email"
+                               id="question_email"
                                title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
                                class="input-text"
                                type="email"
@@ -43,7 +43,7 @@
                            for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
                     <div class="control">
                         <input name="telephone"
-                               id="telephone"
+                               id="question_telephone"
                                title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
                                class="input-text"
                                type="text"
@@ -56,7 +56,7 @@
                            for="comment"><span><?= $block->escapeHtml(__('Question')) ?></span></label>
                     <div class="control">
                         <textarea name="comment"
-                                  id="comment"
+                                  id="question_comment"
                                   title="<?= $block->escapeHtmlAttr(__('Question')) ?>"
                                   class="input-text"
                                   cols="5"
@@ -68,7 +68,7 @@
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
-                    <input type="hidden" name="hideit" id="hideit" value=""/>
+                    <input type="hidden" name="hideit" id="question_hideit" value=""/>
                     <button type="submit" title="<?= $block->escapeHtmlAttr(__('Send')) ?>"
                             class="action submit primary">
                         <span><?= $block->escapeHtml(__('Send')) ?></span>
