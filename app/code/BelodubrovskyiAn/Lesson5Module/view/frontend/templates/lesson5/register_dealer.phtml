@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="field country required">
-                        <label for="country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
+                        <label for="dealer_country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
                         <div class="control">
                             <?= $block->getCountryHtmlSelect() ?>
                         </div>
@@ -207,7 +207,7 @@
         <?php if ($block->getShowAddressFields()): ?>
             <script type="text/x-magento-init">
     {
-        "#country": {
+        "#dealer_country": {
             "regionUpdater": {
                 "optionalRegionAllowed": <?= /* @noEscape */ $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
                 "regionListId": "#dealer_region_id",
