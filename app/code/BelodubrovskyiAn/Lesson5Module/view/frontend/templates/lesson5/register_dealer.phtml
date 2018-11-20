@@ -21,8 +21,8 @@
                 <?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                 <?php if ($block->isNewsletterEnabled()): ?>
                     <div class="field choice newsletter">
-                        <input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
-                        <label for="is_subscribed" class="label"><span><?= $block->escapeHtml(__('Sign Up for Newsletter')) ?></span></label>
+                        <input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="dealer_is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                        <label for="dealer_is_subscribed" class="label"><span><?= $block->escapeHtml(__('Sign Up for Newsletter')) ?></span></label>
                     </div>
                     <?php /* Extensions placeholder */ ?>
                     <?= $block->getChildHtml('customer.form.register.newsletter') ?>
@@ -130,13 +130,13 @@
             <fieldset class="fieldset create account" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
                 <legend class="legend"><span><?= $block->escapeHtml(__('Sign-in Information')) ?></span></legend><br>
                 <div class="field required">
-                    <label for="email_address" class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                    <label for="dealer_email_address" class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
                     <div class="control">
-                        <input type="email" name="email" autocomplete="email" id="email_address" value="<?= $block->escapeHtmlAttr($block->getFormData()->getEmail()) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-mage-init='{"mage/trim-input":{}}' class="input-text" data-validate="{required:true, 'validate-email':true}">
+                        <input type="email" name="email" autocomplete="email" id="dealer_email_address" value="<?= $block->escapeHtmlAttr($block->getFormData()->getEmail()) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-mage-init='{"mage/trim-input":{}}' class="input-text" data-validate="{required:true, 'validate-email':true}">
                     </div>
                 </div>
                 <div class="field password required">
-                    <label for="qpassword" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+                    <label for="dealer_password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
                     <div class="control">
                         <input type="password" name="password" id="dealer_password"
                                title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
@@ -157,9 +157,9 @@
 
                 </div>
                 <div class="field confirmation required">
-                    <label for="password-confirmation" class="label"><span><?= $block->escapeHtml(__('Confirm Password')) ?></span></label>
+                    <label for="dealer_password-confirmation" class="label"><span><?= $block->escapeHtml(__('Confirm Password')) ?></span></label>
                     <div class="control">
-                        <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#dealer_password'}" autocomplete="off">
+                        <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="dealer_password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#dealer_password'}" autocomplete="off">
                     </div>
                 </div>
                 <?= $block->getChildHtml('form_additional_info') ?>
