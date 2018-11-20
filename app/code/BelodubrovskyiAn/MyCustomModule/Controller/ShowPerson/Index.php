@@ -1,6 +1,9 @@
 <?php
+
 namespace BelodubrovskyiAn\MyCustomModule\Controller\ShowPerson;
+
 use Magento\Framework\Controller\ResultFactory;
+
 class Index extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -13,6 +16,7 @@ class Index extends \Magento\Framework\App\Action\Action
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getLayout()->getBlock('homework.custom.block')->setName($name)->setLastName($lastName);
+
         return $resultPage;
     }
 }

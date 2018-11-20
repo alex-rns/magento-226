@@ -1,8 +1,10 @@
 <?php
+
 namespace BelodubrovskyiAn\MyCustomModule\Block;
 class CustomBlock extends \Magento\Framework\View\Element\Template
 {
     const LESSON3_TEMPLATE = "BelodubrovskyiAn_MyCustomModule::lesson/myhomework.phtml";
+
     /**
      * add custom template
      */
@@ -12,7 +14,9 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
         $this->setTemplate(self::LESSON3_TEMPLATE);
         return $this;
     }
-    public function getUrlToJsonResponse() {
+
+    public function getUrlToJsonResponse()
+    {
         return $this->getUrl('home_work/jsonresponse/indexjson');
     }
 }
