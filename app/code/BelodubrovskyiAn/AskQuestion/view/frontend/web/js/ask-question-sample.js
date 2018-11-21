@@ -10,7 +10,7 @@ define([
 
     $.widget('geekhub.askQuestionSample', {
         options: {
-            action: ''
+            cookieName: 'ask_question'
         },
 
         /** @inheritdoc */
@@ -28,36 +28,48 @@ define([
                 return;
             }
 
-            console.log('Form was submitted');
-
             var formData = new FormData($(this.element).get(0));
 
             formData.append('form_key', $.mage.cookies.get('form_key'));
 
-            $.ajax({
-                url: $(this.element).attr('action'),
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'post',
-                dataType: 'json',
-                context: this,
-            })
-                .done(function (response) {
-                    alert({
-                        title: response.status,
-                        content: response.message
-                    });
+            if(!$.mage.cookies.get('ask_question') === true) {
+                $.ajax({
+                    url: $(this.element).attr('action'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'post',
+                    dataType: 'json',
+                    context: this
                 })
-                .fail(function (error) {
-                    console.log(JSON.stringify(error));
-                    alert({
-                        title: $.mage.__('Error'),
-                        content: $.mage.__('Your request can not be submitted. Please, contact us directly via email' +
-                            ' or prone to get your Sample.')
-                    });
-                });
+                    .done(function (response) {
+                        alert({
+                            title: response.status,
+                            content: response.message
+                        });
 
+                        if (response.status === 'Success') {
+                            // can use this cookie to prevent from sending requests too often
+                            $.mage.cookies.set(this.options.cookieName, true, {
+                                lifetime: 120
+                            });
+                        }
+                    })
+                    .fail(function (error) {
+                        console.log(JSON.stringify(error));
+                        alert({
+                            title: $.mage.__('Error'),
+                            content: $.mage.__('Your request can not be submitted.' +
+                                ' Please, contact us directly via email' +
+                                ' or prone to get your Sample.')
+                        });
+                    });
+            } else {
+                alert({
+                    title: $.mage.__('Error'),
+                    content: $.mage.__('Please wait two minutes before resending question.')
+                });
+            }
         },
 
         /**
