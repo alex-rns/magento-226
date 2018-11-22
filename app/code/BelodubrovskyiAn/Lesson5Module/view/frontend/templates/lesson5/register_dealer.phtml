@@ -138,7 +138,7 @@
                 <div class="field password required">
                     <label for="dealer_password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
                     <div class="control">
-                        <input type="password" name="password" id="dealer_password"
+                        <input type="password" name="dealer_password" id="dealer_password"
                                title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
                                class="input-text"
                                data-password-min-length="<?= $block->escapeHtmlAttr($block->getMinimumPasswordLength()) ?>"
@@ -222,6 +222,16 @@
     }
 </script>
         <?php endif; ?>
+
+        <script type="text/x-magento-init">
+            {
+                ".field.dealer_password": {
+                    "passwordStrengthIndicator": {
+                        "formSelector": "form.form-create-account"
+                    }
+                }
+            }
+        </script>
     </div>
 </div>
 
