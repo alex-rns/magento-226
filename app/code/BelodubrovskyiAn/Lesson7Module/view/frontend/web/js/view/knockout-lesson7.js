@@ -11,7 +11,9 @@ define(
 
         return Component.extend({
             myTimer: ko.observable(0),
-            randomColour: ko.observable('rgb(0, 0, 0)'),
+            red: ko.observable(0),
+            blue: ko.observable(0),
+            green: ko.observable(0),
             /**
              * Initialize function
              */
@@ -21,6 +23,10 @@ define(
                 //call the incrementTime function to run on intialize
                 this.incrementTime();
                 this.subscribeToTime();
+                this.randomColour = ko.computed(function () {
+                    //return the random colour value
+                    return 'rgb(' + this.red() + ', ' + this.blue() + ', ' + this.green() + ')';
+                }, this);
             },
             /**
              * Increment myTimer every second
@@ -48,14 +54,13 @@ define(
                 return Math.floor((Math.random() * 255) + 1);
             },
             /**
-             * Generating a random colour
+             * Updating color depending on the generated number
              */
             updateTimerTextColour: function () {
                 //define RGB values
-                let red = self.randomNumber(),
-                    blue = self.randomNumber(),
-                    green = self.randomNumber();
-                self.randomColour('rgb(' + red + ', ' + blue + ', ' + green + ')');
+                this.red(self.randomNumber());
+                this.blue(self.randomNumber());
+                this.green(self.randomNumber());
             }
         });
     }
