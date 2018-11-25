@@ -8,6 +8,7 @@ define(
         'use strict';
 
         return Component.extend({
+            myTimer: ko.observable(0),
 
             /**
              * Template function
