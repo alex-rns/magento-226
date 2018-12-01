@@ -4,6 +4,7 @@ return [
         'Magento_Store' => 1,
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
+        'BelodubrovskyiAn_AskQuestion' => 1,
         'BelodubrovskyiAn_Lesson4Module' => 1,
         'BelodubrovskyiAn_Lesson5Module' => 1,
         'BelodubrovskyiAn_MyCustomModule' => 1,
