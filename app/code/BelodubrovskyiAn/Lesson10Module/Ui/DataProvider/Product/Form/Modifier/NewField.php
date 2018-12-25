@@ -1,11 +1,12 @@
 <?php
 namespace BelodubrovskyiAn\Lesson10Module\Ui\DataProvider\Product\Form\Modifier;
+
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\Component\Form\Field;
-use Magento\Ui\Component\Form\Element\Select;
 use Magento\Ui\Component\Form\Element\DataType\Text;
+
 class NewField extends AbstractModifier
 {
     private $locator;
@@ -74,4 +75,3 @@ class NewField extends AbstractModifier
         ];
     }
 }
-
