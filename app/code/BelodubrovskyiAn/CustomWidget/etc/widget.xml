@@ -7,13 +7,15 @@
             <parameter name="title" visible="true" xsi:type="text">
                 <label>Insert title for button</label>
             </parameter>
-            <parameter name="template" xsi:type="select" required="true" visible="true">
-                <label>Сhoose block</label>
-                <options>
-                    <option name="default" value="BelodubrovskyiAn_CustomWidget::widget/lesson9_banner.phtml" selected="true">
-                        <label>Template</label>
-                    </option>
-                </options>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label>Insert block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Select you block</item>
+                        </item>
+                    </data>
+                </block>
             </parameter>
         </parameters>
     </widget>

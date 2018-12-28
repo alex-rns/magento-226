@@ -10,5 +10,5 @@ class Lesson9Banner extends Template implements BlockInterface
      * @var string
      */
     protected $_template = 'widget/lesson9_banner.phtml';
-
 }
+

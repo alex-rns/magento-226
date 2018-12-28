@@ -1,6 +1,15 @@
-<?php if ($block->getData('title')): ?>
-    <button class="title"
-            onclick="location.href='/geekhub-cms'">
-        <?php echo $block->getData('title'); ?>
-    </button>
-<?php endif; ?>
+<div class="geekhub-custom-widget">
+    <?php if ($block->getData('block_id')) : ?>
+        <?php echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId($block->getData('block_id'))
+            ->toHtml();?>
+    <?php endif; ?>
+    <?php if ($block->getData('title')) : ?>
+        <button class="action primary title geekhub-custom-widget-button"
+                onclick="location.href='/geekhub-cms'">
+            <?php echo $block->getData('title'); ?>
+        </button>
+    <?php endif; ?>
+</div>
+
