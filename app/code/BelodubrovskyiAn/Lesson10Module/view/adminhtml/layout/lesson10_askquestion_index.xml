@@ -6,6 +6,7 @@
             <block class="Magento\Framework\View\Element\Template"
                    name="lesson10"
                    template="BelodubrovskyiAn_Lesson10Module::some.phtml"/>
+            <uiComponent name="ask_question"/>
         </referenceContainer>
     </body>
 </page>
