@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="Lesson11" frontName="Lesson11-Oop">
+        <route id="lesson11" frontName="lesson11-oop">
             <module name="BelodubrovskyiAn_Lesson11ModuleOop"/>
         </route>
     </router>

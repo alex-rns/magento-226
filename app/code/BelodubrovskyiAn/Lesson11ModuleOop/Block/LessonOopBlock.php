@@ -1,6 +1,6 @@
 <?php
 namespace BelodubrovskyiAn\Lesson11ModuleOop\Block;
 
-class CustomBlock extends \Magento\Framework\View\Element\Template
+class LessonOopBlock extends \Magento\Framework\View\Element\Template
 {
 }
