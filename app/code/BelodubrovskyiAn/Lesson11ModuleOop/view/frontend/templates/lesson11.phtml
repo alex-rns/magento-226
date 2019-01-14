@@ -1,5 +1,10 @@
 <?php
 ?>
 <div class="oop">
-    <h2>123</h2>
+    <h2>File List</h2>
+    <?php
+    foreach ($block->getFileListObject()->giveFileList() as $filename) {
+        echo "$filename \n" . 'Date of creation/change: ' . date('F d Y H:i:s.', filemtime($filename)) . "\n\n";
+    }
+    ?>
 </div>

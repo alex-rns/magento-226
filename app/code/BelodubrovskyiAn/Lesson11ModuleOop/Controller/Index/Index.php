@@ -1,11 +1,11 @@
 <?php
-namespace BelodubrovskyiAn\Lesson11ModuleOop\Controller\Lesson11Oop;
+namespace BelodubrovskyiAn\Lesson11ModuleOop\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 
 /**
  * Class Index
- * @package BelodubrovskyiAn\Lesson11ModuleOop\Controller\Lesson11Oop
+ * @package BelodubrovskyiAn\Lesson11ModuleOop\Controller\Index
  */
 class Index extends Action
 {
