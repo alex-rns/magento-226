@@ -1,0 +1,15 @@
+<div class="geekhub-custom-widget">
+    <?php if ($block->getBlockId()) : ?>
+        <?php echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId($block->getBlockId())
+            ->toHtml();?>
+    <?php endif; ?>
+    <?php if ($block->getTitle()) : ?>
+        <button class="action primary title geekhub-custom-widget-button"
+                onclick="location.href='/geekhub-cms'">
+            <?php echo $block->getTitle(); ?>
+        </button>
+    <?php endif; ?>
+</div>
+

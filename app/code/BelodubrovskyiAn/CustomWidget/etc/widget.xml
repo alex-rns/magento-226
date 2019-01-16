@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="BelodubrovskyiAn\CustomWidget\Block\Widget\Lesson9Banner" id="lesson9_banner">
+        <label>Banner</label>
+        <description>Banner description</description>
+        <parameters>
+            <parameter name="title" visible="true" xsi:type="text">
+                <label>Insert title for button</label>
+            </parameter>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label>Insert block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Select you block</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
