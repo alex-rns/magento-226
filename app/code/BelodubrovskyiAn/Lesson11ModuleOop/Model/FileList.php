@@ -1,10 +1,14 @@
 <?php
 namespace BelodubrovskyiAn\Lesson11ModuleOop\Model;
 
+/**
+ * Class FileList
+ * @package BelodubrovskyiAn\Lesson11ModuleOop\Model
+ */
 class FileList
 {
     /**
-     * Display list of files and directory in /misc/apps/magento-226/app/code/BelodubrovskyiAn/
+     * @return \RecursiveIteratorIterator
      */
     public function giveFileList()
     {

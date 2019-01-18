@@ -28,7 +28,6 @@ class ConstantsMethods
     {
         return true;
     }
-
     /**
      * @return array
      * @throws \ReflectionException

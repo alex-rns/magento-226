@@ -1,0 +1,21 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="BelodubrovskyiAn\Lesson11ModuleOop\Model\Parameters">
+        <arguments>
+            <argument name="stringParam" xsi:type="string">someStringValue</argument>
+            <argument name="instanceParam" xsi:type="object">BelodubrovskyiAn\Lesson11ModuleOop\Model\ConstantsMethods</argument>
+            <argument name="boolParam" xsi:type="boolean">1</argument>
+            <argument name="intParam" xsi:type="number">1</argument>
+            <argument name="globalInitParam" xsi:type="init_parameter">BelodubrovskyiAn\Lesson11ModuleOop\Model\ConstantsMethods::QWE</argument>
+            <argument name="constantParam" xsi:type="const">BelodubrovskyiAn\Lesson11ModuleOop\Model\ConstantsMethods::REQUEST</argument>
+            <argument name="optionalParam" xsi:type="null"/>
+            <argument name="arrayParam" xsi:type="array">
+                <item name="firstElem" xsi:type="const">BelodubrovskyiAn\Lesson11ModuleOop\Model\ConstantsMethods::AUTH</item>
+                <item name="secondElem" xsi:type="null"/>
+                <item name="thirdElem" xsi:type="array">
+                    <item name="scalarValue" xsi:type="string">ScalarValue</item>
+                    <item name="globalArgument " xsi:type="init_parameter">BelodubrovskyiAn\Lesson11ModuleOop\Model\ConstantsMethods::NONE</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

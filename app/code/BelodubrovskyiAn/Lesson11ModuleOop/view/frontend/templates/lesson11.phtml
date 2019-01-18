@@ -19,4 +19,12 @@
         echo $method->name . '<br/>';
     }
     ?>
+    <h2>Parameters:</h2>
+    <?php foreach ($block->getParametersFromDi()->getParameters() as $parametersName => $parametersValue) :
+        if (is_array($parametersValue)) {
+            $parametersValue = $parametersValue['instance'] ?? 'array';
+        }
+        echo $parametersName . ' : ' . $parametersValue . '<br/>';
+        ?>
+    <?php endforeach; ?>
 </div>
