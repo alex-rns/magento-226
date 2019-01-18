@@ -1,12 +1,12 @@
 <?php
-namespace display_constants;
+namespace BelodubrovskyiAn\Lesson11ModuleOop\Model;
 
-class DisplayConstantsAndMethods
+class ConstantsMethods
 {
     const NONE = 0;
     const REQUEST = 100;
     const AUTH = 101;
-
+    const QWE = 'qwe';
     /**
      * @return int
      */
@@ -14,7 +14,6 @@ class DisplayConstantsAndMethods
     {
         return 5;
     }
-
     /**
      * @return string
      */
@@ -22,7 +21,6 @@ class DisplayConstantsAndMethods
     {
         return 'second';
     }
-
     /**
      * @return bool
      */
@@ -31,21 +29,24 @@ class DisplayConstantsAndMethods
         return true;
     }
 
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
     public function getConstants()
     {
         $oClass = new \ReflectionClass(__CLASS__);
         return $oClass->getConstants();
     }
 
+    /**
+     * @return \ReflectionMethod[]
+     * @throws \ReflectionException
+     */
     public function getMethods()
     {
         $class = new \ReflectionClass(__CLASS__);
         return $class->getMethods();
     }
 }
-//
-//$foo = new DisplayConstantsAndMethods();
-//
-//print_r($foo->getConstants());
-//print_r($foo->getMethods());
 
