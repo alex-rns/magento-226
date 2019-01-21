@@ -7,9 +7,21 @@ use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Element\DataType\Text;
 
+/**
+ * Class NewField
+ * @package BelodubrovskyiAn\Lesson10Module\Ui\DataProvider\Product\Form\Modifier
+ */
 class NewField extends AbstractModifier
 {
+    /**
+     * @var LocatorInterface
+     */
     private $locator;
+
+    /**
+     * NewField constructor.
+     * @param LocatorInterface $locator
+     */
     public function __construct(
         LocatorInterface $locator
     ) {
@@ -50,7 +62,7 @@ class NewField extends AbstractModifier
                     ],
                     'children' => [
                         'custom_field' => $this->getCustomField()
-                        ],
+                    ],
                 ]
             ]
         );
