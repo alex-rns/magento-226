@@ -23,6 +23,7 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
      * @var Parameters
      */
     public $parametersGet;
+
     /**
      * LessonOopBlock constructor.
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -43,35 +44,36 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @return FileList
+     * @return \RecursiveIteratorIterator
      */
-    public function getFileListObject(): FileList
+    public function giveFileList(): \RecursiveIteratorIterator
     {
-        return $this->fileListGet;
+        return $this->fileListGet->giveFileList();
     }
 
     /**
-     * @return ConstantsMethods
-     */
-    public function getConstantsAndMethods(): ConstantsMethods
-    {
-        return $this->constantsAndMethodsGet;
-    }
-
-    /**
-     * @return ConstantsMethods
+     * @return array
      * @throws \ReflectionException
      */
-    public function getMethods(): ConstantsMethods
+    public function getMethods(): array
     {
         return $this->constantsAndMethodsGet->getMethods();
     }
 
     /**
-     * @return Parameters
+     * @return array
+     * @throws \ReflectionException
      */
-    public function getParametersFromDi(): Parameters
+    public function getConstants(): array
     {
-        return $this->parametersGet;
+        return $this->constantsAndMethodsGet->getConstants();
+    }
+
+    /**
+     * @return array
+     */
+    public function getParameters(): array
+    {
+        return $this->parametersGet->getParameters();
     }
 }

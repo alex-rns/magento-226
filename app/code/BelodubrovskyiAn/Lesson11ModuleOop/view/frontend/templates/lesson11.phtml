@@ -3,13 +3,13 @@
 <div class="oop">
     <h2>File List:</h2>
     <?php
-    foreach ($block->getFileListObject()->giveFileList() as $filename) {
-        echo "$filename \n" . 'Date of creation/change: ' . date('F d Y H:i:s.', filemtime($filename)) . "\n\n";
+    foreach ($block->giveFileList() as $filename) {
+        echo $filename . ' Date of creation/change: ' . date('F d Y H:i:s.', filemtime($filename)) . '<br/>';
     }
     ?>
     <h2>Constants:</h2>
     <?php
-    foreach ($block->getConstantsAndMethods()->getConstants() as $constant) {
+    foreach ($block->getConstants() as $constant) {
         echo $constant . '<br/>';
     }
     ?>
@@ -20,7 +20,7 @@
     }
     ?>
     <h2>Parameters:</h2>
-    <?php foreach ($block->getParametersFromDi()->getParameters() as $parametersName => $parametersValue) :
+    <?php foreach ($block->getParameters() as $parametersName => $parametersValue) :
         if (is_array($parametersValue)) {
             $parametersValue = $parametersValue['instance'] ?? 'array';
         }
