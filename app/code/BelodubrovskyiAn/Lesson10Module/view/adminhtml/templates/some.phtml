@@ -1,0 +1,21 @@
+<?php
+?>
+<div class="sample content"
+     data-bind="scope: 'lesson10-example-component'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                        "lesson10-example-component": {
+                            "component" : "BelodubrovskyiAn_Lesson10Module/js/lesson10-example",
+                            "template" : "BelodubrovskyiAn_Lesson10Module/lesson10_template"
+                        }
+                    }
+                }
+            }
+    }
+</script>
+

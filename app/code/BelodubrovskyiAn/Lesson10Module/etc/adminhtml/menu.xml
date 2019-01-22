@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BelodubrovskyiAn_Lesson10Module::ask_question"
+             title="Ask Question"
+             translate="title"
+             module="BelodubrovskyiAn_Lesson10Module"
+             sortOrder="50"
+             parent="Magento_Backend::content"
+             action="lesson10/askquestion/index"
+             resource="BelodubrovskyiAn_Lesson10Module::ask_question"/>
+    </menu>
+</config>
