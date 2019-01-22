@@ -15,7 +15,7 @@
     ?>
     <h2>Methods:</h2>
     <?php
-    foreach ($block->getConstantsAndMethods()->getMethods() as $method) {
+    foreach ($block->getMethods() as $method) {
         echo $method->name . '<br/>';
     }
     ?>

@@ -59,6 +59,15 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * @return ConstantsMethods
+     * @throws \ReflectionException
+     */
+    public function getMethods(): ConstantsMethods
+    {
+        return $this->constantsAndMethodsGet->getMethods();
+    }
+
+    /**
      * @return Parameters
      */
     public function getParametersFromDi(): Parameters
