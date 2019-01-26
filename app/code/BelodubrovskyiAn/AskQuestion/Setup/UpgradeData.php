@@ -30,7 +30,7 @@ class UpgradeData implements UpgradeDataInterface
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+        if (version_compare($context->getVersion(), '1.0.3', '<')) {
             $statuses = [AskQuestion::STATUS_PENDING, AskQuestion::STATUS_PROCESSED];
             for ($i = 1; $i <= 5; $i++) {
                 /** @var AskQuestion $askQuestion */
