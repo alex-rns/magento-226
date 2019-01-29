@@ -2,11 +2,14 @@
 $questions = $block->getQuestions();
 ?>
 <?php if ($questions->count()): ?>
-    <ul>
+    <h2>Questions from customers:</h2>
+    <ol>
         <?php /** @var \BelodubrovskyiAn\AskQuestion\Model\AskQuestion $askQuestion */
         foreach ($questions as $question):
             ?>
-            <li><?= __('Question : %1', $question->getQuestion()) ?></li>
+            <li>
+                <?= __('From <b>%1</b>: %2', $question->getName(), $question->getQuestion()) ?>
+            </li>
         <?php endforeach; ?>
-    </ul>
+    </ol>
 <?php endif; ?>
