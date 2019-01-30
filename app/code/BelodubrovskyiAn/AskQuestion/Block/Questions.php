@@ -49,12 +49,4 @@ class Questions extends \Magento\Framework\View\Element\Template
         }
         return $collection;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrentProduct()
-    {
-        return $this->registry->registry('current_product');
-    }
 }
