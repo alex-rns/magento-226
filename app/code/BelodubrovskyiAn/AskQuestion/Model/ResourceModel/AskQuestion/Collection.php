@@ -13,6 +13,16 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     private $storeManager;
 
     /**
+     * @var string
+     */
+    protected $_eventPrefix = 'belodubrovskyi_askquestion_collection';
+
+    /**
+     * @var string
+     */
+    protected $_eventObject = 'askquestion_collection';
+
+    /**
      * Collection constructor.
      * @param \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory
      * @param \Psr\Log\LoggerInterface $logger
@@ -48,7 +58,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @return Collection
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function addStoreFilter(int $storeId = 0): self
+    public function addStoreFilter(int $storeId = 0)
     {
         if (!$storeId) {
             $storeId = (int) $this->storeManager->getStore()->getId();
