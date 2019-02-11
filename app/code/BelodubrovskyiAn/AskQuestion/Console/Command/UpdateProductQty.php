@@ -66,8 +66,6 @@ class UpdateProductQty extends \Symfony\Component\Console\Command\Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int|void|null
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
@@ -84,7 +82,11 @@ class UpdateProductQty extends \Symfony\Component\Console\Command\Command
 
             $stockItem->setIsInStock((int) $input->getArgument('qty'));
 
-            $newQty = (int) $input->getArgument('qty');
+            $newQty = $input->getArgument('qty');
+
+            if ($newQty == !is_numeric($input->getArgument('qty')) || ($input->getArgument('qty') < 0)) {
+                exit('Input error! Please enter a positive number.');
+            }
 
             $this->stockRegistry->updateStockItemBySku($product->getSku(), $stockItem);
 
