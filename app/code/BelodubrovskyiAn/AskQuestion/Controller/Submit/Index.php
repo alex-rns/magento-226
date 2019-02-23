@@ -4,6 +4,7 @@ namespace BelodubrovskyiAn\AskQuestion\Controller\Submit;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 use BelodubrovskyiAn\AskQuestion\Model\AskQuestion;
+use BelodubrovskyiAn\AskQuestion\Helper\Mail;
 
 /**
  * Class Index
@@ -20,6 +21,11 @@ class Index extends \Magento\Framework\App\Action\Action
     private $formKeyValidator;
 
     /**
+     * @var Mail
+     */
+    private $mailHelper;
+
+    /**
      * @var \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory
      */
     private $askQuestionFactory;
@@ -29,15 +35,18 @@ class Index extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Magento\Framework\App\Action\Context $context
      * @param \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory
+     * @param Mail $mailHelper
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Magento\Framework\App\Action\Context $context,
-        \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory
+        \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory,
+        Mail $mailHelper
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->askQuestionFactory =$askQuestionFactory;
+        $this->mailHelper = $mailHelper;
     }
 
     /**
@@ -63,6 +72,16 @@ class Index extends \Magento\Framework\App\Action\Action
                 ->setSku($request->getParam('sku'))
                 ->setQuestion($request->getParam('question'));
             $askQuestion->save();
+
+            /**
+             * Send Email
+             */
+            if ($request->getParam('email')) {
+                $email = $request->getParam('email');
+                $customerName = $request->getParam('name');
+                $message = $request->getParam('question');
+                $this->mailHelper->sendMail($email, $customerName, $message);
+            }
 
             $data = [
                 'status' => self::STATUS_SUCCESS,
