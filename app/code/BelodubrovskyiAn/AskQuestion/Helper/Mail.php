@@ -60,10 +60,12 @@ class Mail extends AbstractHelper
      * @param $emailFrom
      * @param string $customerName
      * @param $message
+     * @param $product
+     * @param $sku
      * @throws \Magento\Framework\Exception\MailException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function sendMail($emailFrom, $customerName = '', $message)
+    public function sendMail($emailFrom, $customerName, $message, $product, $sku)
     {
         $templateOptions = [
             'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
@@ -72,7 +74,9 @@ class Mail extends AbstractHelper
         $templateVars = [
             'store' => $this->storeManager->getStore(),
             'customer_name' => $customerName,
-            'message'   => $message
+            'message'   => $message,
+            'product'  => $product,
+            'sku'      => $sku
         ];
         $from = ['email' => $emailFrom, 'name' => $customerName];
         $this->inlineTranslation->suspend();
@@ -98,11 +102,6 @@ class Mail extends AbstractHelper
         );
         if ($transEmailSaller) {
             return $transEmailSaller;
-        }
-        $userFactory =  $this->userFactory->create();
-        if ($userFactory) {
-            $user = $userFactory->getById(1);
-            return $user->getEmail();
         }
         return '';
     }

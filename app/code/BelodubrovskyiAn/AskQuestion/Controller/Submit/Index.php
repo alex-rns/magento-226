@@ -79,8 +79,10 @@ class Index extends \Magento\Framework\App\Action\Action
             if ($request->getParam('email')) {
                 $email = $request->getParam('email');
                 $customerName = $request->getParam('name');
+                $product = $request->getParam('product_name');
+                $sku = $request->getParam('sku');
                 $message = $request->getParam('question');
-                $this->mailHelper->sendMail($email, $customerName, $message);
+                $this->mailHelper->sendMail($email, $customerName, $message, $product, $sku);
             }
 
             $data = [
