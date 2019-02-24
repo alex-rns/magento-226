@@ -78,16 +78,34 @@ class Mail extends AbstractHelper
             'product'  => $product,
             'sku'      => $sku
         ];
-        $from = ['email' => $emailFrom, 'name' => $customerName];
         $this->inlineTranslation->suspend();
-        $to = [$this->getAdminEmail()];
-        $transport = $this->transportBuilder->setTemplateIdentifier('ask_question_email_template')
+
+        /**
+         * Email to customers
+         */
+        $from = ['email' => $this->getAdminEmail(), 'name' => 'Admin'];
+        $to = [$emailFrom];
+        $transport = $this->transportBuilder->setTemplateIdentifier('ask_question_email_template_to_customer')
             ->setTemplateOptions($templateOptions)
             ->setTemplateVars($templateVars)
             ->setFrom($from)
             ->addTo($to)
             ->getTransport();
         $transport->sendMessage();
+
+        /**
+         * Email to admin
+         */
+        $from = ['email' => $emailFrom, 'name' => $customerName];
+        $to = [$this->getAdminEmail()];
+        $transport = $this->transportBuilder->setTemplateIdentifier('ask_question_email_template_to_admin')
+            ->setTemplateOptions($templateOptions)
+            ->setTemplateVars($templateVars)
+            ->setFrom($from)
+            ->addTo($to)
+            ->getTransport();
+        $transport->sendMessage();
+
         $this->inlineTranslation->resume();
     }
 
