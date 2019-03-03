@@ -89,6 +89,9 @@ class Index extends \Magento\Framework\App\Action\Action
                 'status' => self::STATUS_SUCCESS,
                 'message' => __('Your request was submitted. We\'ll get in touch with you as soon as possible.')
             ];
+            if ($this->mailHelper->getEnableFlagEmailing() == 0) {
+                throw new LocalizedException(__('EMailing disabled.'));
+            }
         } catch (LocalizedException $e) {
             $data = [
                 'status'  => self::STATUS_ERROR,

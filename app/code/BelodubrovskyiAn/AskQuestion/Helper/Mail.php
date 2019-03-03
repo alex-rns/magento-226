@@ -123,4 +123,15 @@ class Mail extends AbstractHelper
         }
         return '';
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEnableFlagEmailing()
+    {
+        return $this->scopeConfig->getValue(
+            'ask_question_options/email/emailing',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORES
+        );
+    }
 }
