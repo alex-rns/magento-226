@@ -3,7 +3,8 @@ namespace BelodubrovskyiAn\AskQuestion\Controller\Submit;
 
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
-use BelodubrovskyiAn\AskQuestion\Model\AskQuestion;
+use BelodubrovskyiAn\AskQuestion\Api\Data\AskQuestionInterface;
+use BelodubrovskyiAn\AskQuestion\Api\AskQuestionRepositoryInterface;
 use BelodubrovskyiAn\AskQuestion\Helper\Mail;
 
 /**
@@ -31,6 +32,11 @@ class Index extends \Magento\Framework\App\Action\Action
     private $askQuestionFactory;
 
     /**
+     * @var AskQuestionRepositoryInterface
+     */
+    private $askQuestionRepository;
+
+    /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Magento\Framework\App\Action\Context $context
@@ -41,12 +47,14 @@ class Index extends \Magento\Framework\App\Action\Action
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Magento\Framework\App\Action\Context $context,
         \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory,
-        Mail $mailHelper
+        Mail $mailHelper,
+        AskQuestionRepositoryInterface $askQuestionRepository
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->askQuestionFactory =$askQuestionFactory;
         $this->mailHelper = $mailHelper;
+        $this->askQuestionRepository = $askQuestionRepository;
     }
 
     /**
@@ -63,7 +71,7 @@ class Index extends \Magento\Framework\App\Action\Action
             }
             // Here we must also process backend validation or all form fields.
             // Otherwise attackers can just copy our page, remove fields validation and send anything they want
-            /** @var AskQuestion $askQuestion */
+            /** @var AskQuestionInterface $askQuestion */
             $askQuestion = $this->askQuestionFactory->create();
             $askQuestion->setName($request->getParam('name'))
                 ->setEmail($request->getParam('email'))
@@ -71,7 +79,7 @@ class Index extends \Magento\Framework\App\Action\Action
                 ->setProductName($request->getParam('product_name'))
                 ->setSku($request->getParam('sku'))
                 ->setQuestion($request->getParam('question'));
-            $askQuestion->save();
+            $this->askQuestionRepository->save($askQuestion);
 
             /**
              * Send Email
