@@ -1,9 +1,11 @@
 <?php
 /**
- * @var $block \Magento\Catalog\Block\Product\View
+ * @var \Magento\Catalog\Block\Product\View $block
  */
 ?>
-<?php $imageObject = $block->getImage($block->getProduct(), 'product_base_image'); ?>
+<?php $product = $block->getProduct();
+$imageObject = $block->getImage($product, 'product_base_image');
+?>
 <div>
     <h2><?php echo $block->escapeHtml(__('Ask Question')) ?></h2>
     <div>
@@ -18,7 +20,7 @@
                     <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
                     <div class="control">
                         <input name="name"
-                               id="question_name"
+                               id="name"
                                title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
                                class="input-text"
                                type="text"
@@ -30,7 +32,7 @@
                     <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
                     <div class="control">
                         <input name="email"
-                               id="question_email"
+                               id="email"
                                title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
                                class="input-text"
                                type="email"
@@ -38,12 +40,12 @@
                                placeholder="Input your e-mail"/>
                     </div>
                 </div>
-                <div class="field telephone required">
+                <div class="field phone required">
                     <label class="label"
-                           for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+                           for="phone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
                     <div class="control">
-                        <input name="telephone"
-                               id="question_telephone"
+                        <input name="phone"
+                               id="phone"
                                title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
                                class="input-text"
                                type="text"
@@ -51,12 +53,12 @@
                                placeholder="Input your phone number"/>
                     </div>
                 </div>
-                <div class="field comment required">
+                <div class="field question required">
                     <label class="label"
-                           for="comment"><span><?= $block->escapeHtml(__('Question')) ?></span></label>
+                           for="question"><span><?= $block->escapeHtml(__('Question')) ?></span></label>
                     <div class="control">
-                        <textarea name="comment"
-                                  id="question_comment"
+                        <textarea name="question"
+                                  id="question"
                                   title="<?= $block->escapeHtmlAttr(__('Question')) ?>"
                                   class="input-text"
                                   cols="5"
@@ -68,6 +70,8 @@
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
+                    <input type="hidden" name="sku" value="<?= $block->escapeHtml($product->getSku()) ?>"/>
+                    <input type="hidden" name="product_name" value="<?= $block->escapeHtml($product->getName()) ?>"/>
                     <input type="hidden" name="hideit" id="question_hideit" value=""/>
                     <button type="submit" title="<?= $block->escapeHtmlAttr(__('Send')) ?>"
                             class="action submit primary">
@@ -78,3 +82,4 @@
         </form>
     </div>
 </div>
+<?= $block->getChildHtml('questions.list') ?>
