@@ -6,6 +6,8 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Store\Model\Store;
 use BelodubrovskyiAn\AskQuestion\Model\AskQuestion;
+use Magento\Eav\Setup\EavSetup;
+use Magento\Eav\Setup\EavSetupFactory;
 
 class UpgradeData implements UpgradeDataInterface
 {
@@ -15,12 +17,21 @@ class UpgradeData implements UpgradeDataInterface
     private $askQuestionFactory;
 
     /**
+     * @var EavSetupFactory
+     */
+    private $eavSetupFactory;
+
+    /**
      * UpgradeData constructor.
      * @param \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory
+     * @param EavSetupFactory $eavSetupFactory
      */
-    public function __construct(\BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory)
-    {
+    public function __construct(
+        \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory,
+        EavSetupFactory $eavSetupFactory
+    ) {
         $this->askQuestionFactory = $askQuestionFactory;
+        $this->eavSetupFactory = $eavSetupFactory;
     }
 
     /**
@@ -30,7 +41,8 @@ class UpgradeData implements UpgradeDataInterface
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '1.0.3', '<')) {
+        $setup->startSetup();
+        if (version_compare($context->getVersion(), '1.0.4', '<')) {
             $statuses = [AskQuestion::STATUS_PENDING, AskQuestion::STATUS_PROCESSED];
             for ($i = 1; $i <= 5; $i++) {
                 /** @var AskQuestion $askQuestion */
@@ -46,5 +58,36 @@ class UpgradeData implements UpgradeDataInterface
                 $askQuestion->save();
             }
         }
+
+        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $eavSetup->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'allow_to_ask_questions',
+            [
+                'type' => 'int',
+                'backend' => '',
+                'frontend' => '',
+                'label' => 'Allow to ask questions',
+                'input' => 'boolean',
+                'class' => '',
+                'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
+                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                'visible' => true,
+                'required' => true,
+                'user_defined' => false,
+                'default' => 1,
+                'searchable' => false,
+                'filterable' => false,
+                'comparable' => false,
+                'visible_on_front' => false,
+                'used_in_product_listing' => true,
+                'unique' => false,
+                'apply_to' => '',
+                'sort_order' => 15,
+                'group' => 'General'
+            ]
+        );
+
+        $setup->endSetup();
     }
 }
