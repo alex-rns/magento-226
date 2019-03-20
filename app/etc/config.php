@@ -5,6 +5,7 @@ return [
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
         'BelodubrovskyiAn_AskQuestion' => 1,
+        'BelodubrovskyiAn_CustomCheckoutModule' => 1,
         'BelodubrovskyiAn_CustomWidget' => 1,
         'BelodubrovskyiAn_Lesson10Module' => 1,
         'BelodubrovskyiAn_Lesson11ModuleOop' => 1,
