@@ -14,6 +14,7 @@ return [
         'BelodubrovskyiAn_Lesson7Module' => 1,
         'BelodubrovskyiAn_MyCustomModule' => 1,
         'Magento_Theme' => 1,
+        'Geekhub_CustomerOrder' => 1,
         'Magento_Cms' => 1,
         'Magento_Customer' => 1,
         'Magento_AdminNotification' => 1,
