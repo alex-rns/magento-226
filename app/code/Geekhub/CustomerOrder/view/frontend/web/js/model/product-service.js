@@ -5,7 +5,7 @@ define([
     'use strict';
 
     return {
-        getCustomerList: function (params, options, response) {
+        getProductList: function (params, options, response) {
             params = params || {};
             utils.ajaxSubmit({
                 url: options.url,
