@@ -2,8 +2,11 @@
 namespace BelodubrovskyiAn\AskQuestion\Observer\Catalog\Block\Product;
 
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Registry;
+use Magento\Customer\Model\Session;
+use Magento\Framework\Event\ObserverInterface;
 
-class View implements \Magento\Framework\Event\ObserverInterface
+class View implements ObserverInterface
 {
     /**
      * @var \Magento\Framework\Registry
@@ -11,12 +14,20 @@ class View implements \Magento\Framework\Event\ObserverInterface
     private $registry;
 
     /**
+     * @var Session
+     */
+    private $customerSession;
+
+    /**
      * View constructor.
      * @param \Magento\Framework\Registry $registry
      */
-    public function __construct(\Magento\Framework\Registry $registry)
-    {
+    public function __construct(
+        Registry $registry,
+        Session $customerSession
+    ) {
         $this->registry = $registry;
+        $this->customerSession = $customerSession;
     }
 
     /**
@@ -28,7 +39,7 @@ class View implements \Magento\Framework\Event\ObserverInterface
         $actionName = $observer->getEvent()->getData('full_action_name');
         $product = $this->registry->registry('current_product');
         $layout = $observer->getEvent()->getData('layout');
-        if ($product && $actionName === 'catalog_product_view' && $product->getAllowToAskQuestions()) {
+        if ($product && $actionName === 'catalog_product_view' && !$this->customerSession->getCustomer()->getDisallowAskQuestion()) {
             $layout->getUpdate()->addHandle('catalog_product_view_ask_question_tab');
         }
         return $this;
