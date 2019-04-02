@@ -35,7 +35,7 @@ class ChangeQuestionStatus
     }
     public function execute() :void
     {
-        if ($this->getEnableFlag() == 1) {
+        if ($this->getEnableFlag()) {
             $collection = $this->collectionFactory->create();
 
             $collection->addFieldToFilter('status', AskQuestion::STATUS_PENDING)
