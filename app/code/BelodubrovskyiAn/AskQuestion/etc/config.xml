@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ask_question_options>
+            <cron>
+                <enable>1</enable>
+                <days>3</days>
+            </cron>
+        </ask_question_options>
+    </default>
+</config>
