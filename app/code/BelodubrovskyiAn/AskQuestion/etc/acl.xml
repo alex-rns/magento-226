@@ -9,6 +9,11 @@
                               title="Questions"
                               translate="title"
                               sortOrder="50" />
+                    <resource id="Magento_Backend::content_elements">
+                        <resource id="BelodubrovskyiAn_AskQuestion::manage"
+                                  title="Manage Ask Question"
+                                  sortOrder="60" />
+                    </resource>
                 </resource>
             </resource>
         </resources>
