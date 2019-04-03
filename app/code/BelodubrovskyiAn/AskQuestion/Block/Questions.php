@@ -33,18 +33,15 @@ class Questions extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * @param null $limit
      * @return Collection
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function getQuestions(): Collection
+    public function getQuestions($limit = null): Collection
     {
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();
-        $collection->addStoreFilter()
-            ->addFieldToFilter('sku', $this->registry->registry('product')->getSku())
-            ->getSelect()
-            ->orderRand();
-        if ($limit = $this->getData('limit')) {
+        $collection->getSelect()->order('created_at DESC');
+        if ($limit = $limit ? $limit : $this->getData('limit')) {
             $collection->setPageSize($limit);
         }
         return $collection;

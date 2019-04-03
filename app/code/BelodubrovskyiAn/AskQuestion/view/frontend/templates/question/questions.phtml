@@ -1,0 +1,12 @@
+<?php /** @var \BelodubrovskyiAn\AskQuestion\Block\Questions $block */
+$questions = $block->getQuestions(10);
+?>
+<ol>
+    <?php /** @var \BelodubrovskyiAn\AskQuestion\Model\AskQuestion $askQuestion */
+    foreach ($questions as $question):
+        ?>
+        <li>
+            <p><?= __('From <b>%1</b>: %2', $question->getName(), $question->getQuestion()) ?><b> to product:</b> <?= $question->getProductName()?></p>
+        </li>
+    <?php endforeach; ?>
+</ol>
