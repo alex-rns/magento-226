@@ -124,6 +124,10 @@ class UpgradeData implements UpgradeDataInterface
         if (version_compare($context->getVersion(), '1.0.6') < 0) {
             $this->createDisallowAskQuestionCustomerGroup();
         }
+
+        if (version_compare($context->getVersion(), '1.0.7') < 0) {
+            $this->createCorpusAddressCustomerAttribute($setup);
+        }
     }
 
     /**
@@ -169,5 +173,32 @@ class UpgradeData implements UpgradeDataInterface
         /** @var \Magento\Customer\Model\Group $group */
         $group = $this->groupFactory->create();
         $group->setCode('Forbidden for Ask Question')->save();
+    }
+
+    /**
+     * @param $setup
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function createCorpusAddressCustomerAttribute($setup)
+    {
+        $code = 'corpus';
+        /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
+        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $eavSetup->addAttribute(
+            'customer_address',
+            $code,
+            [
+                'label'        => 'Corpus',
+                'input'        => 'text',
+                'required'     => false,
+                'visible'      => true,
+                'position'     => 888,
+                'system'       => 0
+            ]
+        );
+        $attribute = $this->customerAttribute->loadByCode('customer_address', $code);
+        $attribute->addData([
+            'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
+        ])->save();
     }
 }
