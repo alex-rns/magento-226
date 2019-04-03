@@ -10,6 +10,8 @@ use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Customer\Model\Customer;
 use Magento\Eav\Model\Entity\Attribute\Source\Boolean;
+use Magento\Customer\Model\GroupFactory;
+use Magento\Customer\Model\ResourceModel\GroupRepository;
 
 class UpgradeData implements UpgradeDataInterface
 {
@@ -29,25 +31,41 @@ class UpgradeData implements UpgradeDataInterface
     private $customerAttribute;
 
     /**
+     * @var GroupFactory
+     */
+    private $groupFactory;
+
+    /**
+     * @var GroupRepository
+     */
+    private $groupRepository;
+
+    /**
      * UpgradeData constructor.
      * @param \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory
      * @param EavSetupFactory $eavSetupFactory
      * @param \Magento\Customer\Model\Attribute $customerAttribute
+     * @param GroupFactory $groupFactory
+     * @param GroupRepository $groupRepository
      */
     public function __construct(
         \BelodubrovskyiAn\AskQuestion\Model\AskQuestionFactory $askQuestionFactory,
         EavSetupFactory $eavSetupFactory,
-        \Magento\Customer\Model\Attribute $customerAttribute
+        \Magento\Customer\Model\Attribute $customerAttribute,
+        GroupFactory $groupFactory,
+        GroupRepository $groupRepository
     ) {
         $this->askQuestionFactory = $askQuestionFactory;
         $this->eavSetupFactory = $eavSetupFactory;
         $this->customerAttribute = $customerAttribute;
+        $this->groupFactory = $groupFactory;
+        $this->groupRepository = $groupRepository;
     }
 
     /**
      * @param ModuleDataSetupInterface $setup
      * @param ModuleContextInterface $context
-     * @throws \Exception
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -102,6 +120,10 @@ class UpgradeData implements UpgradeDataInterface
             $this->createDisallowAslQuestionCustomerAttribute($setup);
         }
         $setup->endSetup();
+
+        if (version_compare($context->getVersion(), '1.0.6') < 0) {
+            $this->createDisallowAskQuestionCustomerGroup();
+        }
     }
 
     /**
@@ -136,5 +158,16 @@ class UpgradeData implements UpgradeDataInterface
             'attribute_group_id' => 1,
             'used_in_forms' => ['adminhtml_customer', 'customer_account_edit'],
         ])->save();
+    }
+
+    /**
+     * @param $setup
+     * @throws \Exception
+     */
+    public function createDisallowAskQuestionCustomerGroup()
+    {
+        /** @var \Magento\Customer\Model\Group $group */
+        $group = $this->groupFactory->create();
+        $group->setCode('Forbidden for Ask Question')->save();
     }
 }
