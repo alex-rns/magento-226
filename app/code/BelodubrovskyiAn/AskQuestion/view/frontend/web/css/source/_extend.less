@@ -1,0 +1,80 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+@mobile-cart-padding: 15px;
+@cart-price-color: @color-gray40;
+@cart-item-cell-padding-top: 20px;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .cart{
+        table {
+            border-collapse: collapse;
+        }
+        th {
+            background-color:green;
+            Color:white;
+        }
+        th, td {
+            width:150px;
+            text-align:center;
+            border:1px solid black;
+            padding:5px
+
+        }
+        .col {
+            border-right:hidden;
+            background: red;
+        }
+        .cart.item {
+            border-collapse:separate;
+            border-spacing:0 15px;
+            background: blue;
+        }
+        h1 {
+            color:green;
+        }
+    }
+
+    //  Products table
+    .cart {
+        &.table-wrapper {
+            .actions-toolbar {
+                &:extend(.abs-add-clearfix all);
+                min-height: 20px;
+                padding-bottom: 15px;
+                position: relative;
+
+                > .action-edit,
+                > .action-delete {
+                    position: absolute;
+                    right: 16px;
+                    top: 0;
+                    .lib-icon-font(
+                            @icon-edit,
+                        @_icon-font-size: 18px,
+                        @_icon-font-line-height: 20px,
+                        @_icon-font-text-hide: true,
+                        @_icon-font-color: @minicart-icons-color,
+                        @_icon-font-color-hover: @primary__color,
+                        @_icon-font-color-active: @minicart-icons-color
+                    );
+                }
+
+                > .action-delete {
+                    &:extend(.abs-action-button-as-link all);
+                    right: 0;
+                    .lib-icon-font-symbol(
+                        @_icon-font-content: @icon-star
+                    );
+                }
+            }
+        }
+    }
+}
