@@ -13,6 +13,7 @@ return [
         'BelodubrovskyiAn_Lesson5Module' => 1,
         'BelodubrovskyiAn_Lesson7Module' => 1,
         'BelodubrovskyiAn_MyCustomModule' => 1,
+        'BelodubrovskyiAn_MyTest' => 1,
         'Magento_Theme' => 1,
         'Geekhub_CustomerOrder' => 1,
         'Magento_Cms' => 1,
