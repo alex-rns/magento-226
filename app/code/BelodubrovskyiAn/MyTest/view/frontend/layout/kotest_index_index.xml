@@ -12,6 +12,10 @@
                    before="-"
                    cacheable="false"
                    template="BelodubrovskyiAn_MyTest::knockout_sample.phtml" />
+
+            <block class="Magento\Wishlist\Block\Link"
+                   name="wish-list-link-custom"
+                   template="BelodubrovskyiAn_MyTest::link.phtml" />
         </referenceContainer>
     </body>
 </page>
